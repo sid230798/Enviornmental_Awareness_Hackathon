@@ -14,36 +14,77 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 # scheduler.start()
 
 
+class Guardian:
+	@staticmethod
+	def get_urls():
+
+		feed_url = "https://www.theguardian.com/environment/pollution"
+		url = urlopen(feed_url).read()
+		soup = BeautifulSoup(url, 'html.parser')
+		print(soup.prettify())
+		pages = []
+		for ulist in soup.find_all('ul', {'class':"u-unstyled l-list l-list--columns-2 l-list--rows-3"}):
+			count=0
+			for li in ulist.find_all('li', {'class':"fc-slice__item l-list__item l-row__item l-row__item--span-1 u-faux-block-link"}):
+				count=count+1
+				if(count>5):
+					return pages
+				link=""	
+				for a in li.find_all('a', href=True) :
+					link = a['href']
+				print(link)
+				pages.append(link)
+		
+		return pages
+
 class NDTV:
 	@staticmethod
 	def get_urls():
 
-		feed_url = "http://feeds.feedburner.com/ndtvnews-latest"
-		url = urlopen(feed_url)
-		soup = BeautifulSoup(url, 'xml')
+		feed_url = "https://www.ndtv.com/topic/pollution"
+		url = urlopen(feed_url).read()
+		soup = BeautifulSoup(url, 'html.parser')
 		pages = []
-		for item in soup('item'):
-			page_link = item('link')[0]
-			pages.append(page_link.text)
+		for div in soup.find_all('div',id="news_list"):
+			for ultag in div('ul'):
+				
+				print("faf")
+				count=0
+				for li in ultag('li'):
+					count=count+1
+					if(count>5):
+						return pages
+						 
+					for a in li.find_all('a', href=True,title=True) :
+						link = a['href']
+						# if link[0] == '/':
+						# 	link = "https://www.ndtv.com" + link
+						print(link)	
+						pages.append(link)
+			
 		
-		return pages
 
-class TOI:
+class NYT:
 	@staticmethod
 	def get_urls():
-		feed_url = "https://timesofindia.indiatimes.com/"
-		url = urlopen(feed_url)
-		soup = BeautifulSoup(url, 'lxml')
+		feed_url = "https://www.nytimes.com/topic/subject/air-pollution"
+		url = urlopen(feed_url).read()
+		soup = BeautifulSoup(url,'html.parser')
+		print(soup.prettify())
 		pages = []
-		for ultag in soup.find_all('ul', {'data-vr-zone': 'latest'}):
-			for li in ultag('li'):
+		for olist in soup.find_all('ol', {'class':"story-menu theme-stream initial-set"}):
+			count=0
+			for li in olist.find_all('li', id=True):
+				count=count+1
+				if(count>5):
+					return pages
+				link=""	
 				for a in li.find_all('a', href=True):
 					link = a['href']
-					if link[0] == '/':
-						link = "https://timesofindia.indiatimes.com" + link
-					pages.append(link)
+					print(link)	
+						
+				pages.append(link)
 		
-		return pages
 
 class HT:
 	@staticmethod
