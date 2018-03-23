@@ -3,15 +3,6 @@ from bs4 import BeautifulSoup
 import unicodedata
 from newspaper import Article, build, fulltext
 from urllib.request import urlopen
-from apscheduler.schedulers.blocking import BlockingScheduler
-
-
-# def some_job():
-#     print ("Decorated job")
-
-# scheduler = BlockingScheduler()
-# scheduler.add_job(some_job, 'interval', minutes=1)
-# scheduler.start()
 
 
 class Guardian:
@@ -55,7 +46,7 @@ class NDTV:
 					if(count>5):
 						return pages
 						 
-					for a in li.find_all('a', href=True,title=True) :
+					for a in li.find_all('a', href=True) :
 						link = a['href']
 						# if link[0] == '/':
 						# 	link = "https://www.ndtv.com" + link

@@ -4,7 +4,6 @@ import pymysql
 from datetime import datetime
 import unicodedata
 
-
 class artAdd:
 
     def __init__(self, urls):
