@@ -68,9 +68,7 @@ def run():
     num_articles = len(titles)
     print(num_articles)
 
-    source = "Hindustan Times"
-
-    db = pymysql.connect("localhost","root", "sameer", "newsy")
+    db = pymysql.connect("localhost","root", "12qwaszx", "hack")
 
     cursor = db.cursor()
 
@@ -79,9 +77,9 @@ def run():
     for i in range(num_articles):
         try:
             if time_stamp[i] == None:
-                query = "INSERT INTO `articles`(`Title`, `description`, `source`, `time_stamp`, `link`, `image_url`) values(\"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\")" %(pymysql.escape_string(titles[i].decode("utf-8")), pymysql.escape_string(descrp[i].decode("utf-8")),source, datetime.now().strftime('%Y-%m-%d %H:%M:%S') ,urls[i], image_url[i])
+                query = "INSERT INTO `news`(`title`, `content`, `url`, `image_url`) values(\"%s\", \"%s\", \"%s\", \"%s\")" %(pymysql.escape_string(titles[i].decode("utf-8")), pymysql.escape_string(descrp[i].decode("utf-8")), urls[i], image_url[i])
             else:
-                query = "INSERT INTO `articles`(`Title`, `description`, `source`, `time_stamp`, `link`, `image_url`) values(\"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\")" %(pymysql.escape_string(titles[i].decode("utf-8")),pymysql.escape_string(descrp[i].decode("utf-8")), source,time_stamp[i].strftime('%Y-%m-%d %H:%M:%S'), urls[i], image_url[i])
+                query = "INSERT INTO `news`(`title`, `content`, `url`, `image_url`, `time_stamp`) values(\"%s\", \"%s\", \"%s\", \"%s\", \"%s\")" %(pymysql.escape_string(titles[i].decode("utf-8")), pymysql.escape_string(descrp[i].decode("utf-8")), urls[i], image_url[i], time_stamp[i].strftime('%Y-%m-%d %H:%M:%S'))
             cursor.execute(query)
             db.commit()
             newArticles += 1
