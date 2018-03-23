@@ -1,7 +1,7 @@
 <?php
 
         require_once "includes/common.php";
-  
+		session_start();
         $result = mysqli_query($con,"select id, title, content, image_url, url from news order by time_stamp limit 4");
 ?>
 <!DOCTYPE HTML>
@@ -29,6 +29,12 @@
 			<nav id="menu">
 				<ul class="links">
 					<li><a href="index.html">Home</a></li>
+					<?php if(isset($_SESSION['email'])) { ?>
+					<li><a href="phpscript/logout.php">Logout</a></li>
+					<?php }else{ ?>
+					<li><a href="login.php">Login</a></li>
+					<li><a href="signup.php">Signup</a></li>
+					<?php } ?>
 					<li><a href="generic.html">Generic</a></li>
 					<li><a href="elements.html">Elements</a></li>
 				</ul>
@@ -109,7 +115,7 @@
 								        -->
 										<h2 id="news-title1"><?php echo $row['title']; ?></h2>
 									</header>
-									<p id="news-content1"> <?php echo substr($row['content'], 0, 240); ?></p>
+									<p id="news-content1"> <?php echo substr($row['content'], 0, 200); ?> . . .</p>
 									<footer class="align-center">
 										<a href="<?php echo $row['url']; ?>" class="button alt" id="news-link1">Learn More</a>
 									</footer>
