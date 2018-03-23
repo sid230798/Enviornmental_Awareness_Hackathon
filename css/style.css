@@ -1,0 +1,185 @@
+@font-face {
+font-family: DeliciousRoman;
+src: url(/Delicious-Roman.otf);
+}
+@import  url(https://fonts.googleapis.com/css?family=Montserrat);
+.img-responsive{
+  padding-left: 0;
+  padding-right: 0;
+  margin-right: 0;
+  margin-left: 0;
+}
+.buttonlogin {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+.button3 {
+    background-color: white;
+    opacity: 1  ; 
+    color: black;
+    border: 2px solid #f44336;
+}
+
+.button3:hover {
+    background-color: #f44336;
+    opacity: 1;
+    color: white;
+}
+.bordered-div{
+  border: 2px solid maroon;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+}
+
+/* input */
+input[type=text] {
+    width: 50%;
+    height: 3%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid grey;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    border-radius: 5px;
+    background-color: white;
+}
+label{
+  color: blue;
+}
+input[type=text]:focus {
+    border: 3px solid #ccc;
+}
+/* carousal */
+.carousel-control.left, .carousel-control.right {
+    background-image: none
+}
+.carousel-caption {
+    top: 38%;
+    bottom: 62%;
+    float: left;
+}
+.carousel-inner{
+  width:100%;
+  max-height: 75vh;
+}
+.carousel-indicators li {
+  display: inline-block;
+  margin: 1px;
+  text-indent: -999px;
+  cursor: pointer;
+  background-color: white;
+  background-color: rgba(255, 255, 255, 255);
+  opacity: 0.9;
+  border: 0px solid #fff;
+  border-radius: 0px;
+}
+.carousel-indicators .active{
+    background-color: red;
+}
+/* carousel end*/
+/* pulse button*/
+.pulse-button {
+
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border: none;
+  box-shadow: 0 0 0 0 rgba(7, 99, 171, 0.7);
+  border-radius: 50%;
+  background-color: #0773c8;
+  
+  background-size:cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  -webkit-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  -moz-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  -ms-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+.pulse-button:hover 
+{
+  -webkit-animation: none;-moz-animation: none;-ms-animation: none;animation: none;
+}
+
+@-webkit-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(7, 99, 171, 0);}}
+@-moz-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(7, 99, 171, 0);}}
+@-ms-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(7, 99, 171, 0);}}
+@keyframes pulse {to {box-shadow: 0 0 0 45px rgba(7, 99, 171, 0);}}
+
+/* pulse button end*/
+h1{
+  font-family: Autour One;
+}
+h4{
+  font-family: Autour One;
+}
+h3{
+  font-family: Autour One;
+}
+h2{
+  font-family: Autour One;
+}
+ .navbar {
+  min-height: 80px;
+}
+.navbar-fix {
+  position: fixed;
+  z-index: 8;
+  opacity: 1;
+  background-color: white;
+  border-color: white;
+  color:black;
+}
+.nav.navbar-nav.navbar-right a{
+    color: black;
+    font-size: 1.2em;
+}
+.nav.navbar-nav.navbar-right a:hover, .nav.navbar-nav.navbar-right a:target {
+  color: #6a0505;
+  border-bottom: 4.5px solid #061080;
+}
+.nav.navbar-nav.navbar-right a{
+	-webkit-transition: all 200ms linear, color 200ms linear;
+}
+
+.menuitem{
+	color:blue;
+	font-style: bold;
+}
+
+.navbar-brand {
+  padding: 0 15px;
+  height: 80px;
+  line-height: 80px;
+}
+
+.navbar-toggle {
+  /* (80px - button height 34px) / 2 = 23px */
+  margin-top: 23px;
+  padding: 9px 10px !important;
+}
+
+@media (min-width: 768px) {
+  .navbar-nav > li > a {
+    /* (80px - line-height of 27px) / 2 = 26.5px */
+    padding-top: 26.5px;
+    padding-bottom: 26.5px;
+    line-height: 27px;
+  }
+}
