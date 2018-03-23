@@ -13,3 +13,6 @@ https://helpsavenature.com/noise-pollution-effects
 Waste Management:-
 https://www.goodnet.org/articles/5-countries-creative-approach-to-trash-disposal
 https://www.britannica.com/technology/solid-waste-management
+
+
+https://www.pollutionsolutions-online.com/article/waste-management/21/esg/pnew-guidance-uncovers-answers-around-working-with-asbestos-in-soilsp/2159# lookat this
