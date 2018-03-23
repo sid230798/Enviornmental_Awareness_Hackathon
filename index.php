@@ -1,25 +1,8 @@
 <?php
 
-        include('Connection.php');
+        require_once "includes/common.php";
   
-        $result = mysqli_query($conn,"select id from news order by time_stamp limit 4");
-  
-        $id_array = array();
-        if (mysqli_num_rows($result) > 0){
-        
-                while($row = mysqli_fetch_assoc($result)) {
-                
-                        $id = $row["id"]; 
-                        array_push($id_array,$id);     
-                }
-        
-        
-        }else{
-        
-                echo "0 results"; 
-        
-        }
-
+        $result = mysqli_query($con,"select id, title, content, image_url, url from news order by time_stamp limit 4");
 ?>
 <!DOCTYPE HTML>
 <!--
@@ -107,168 +90,35 @@
 				<div class="inner">
 					<div class="grid-style">
 
+						<?php  if($result && $result->num_rows > 0) { 
+							while(($row = $result->fetch_assoc())){
+							?>
 						<div>
-							<div class="box" id="<?php echo $id_array[0]?>">
+							<div class="box" id="<?php echo $row['id']; ?>">
 								<div class="image fit">
+									<?php if($row['image_url'] == null) { ?>
 									<img src="images/pic02.jpg" alt="" id="news-image1"/>
+									<?php } else{?>
+										<img src="<?php echo $row['image_url']; ?>" alt="" id="news-image1"/>	
+									<?php } ?>
 								</div>
 								<div class="content">
 									<header class="align-center">
 									<!--
 										<p>maecenas sapien feugiat ex purus</p>
 								        -->
-										<h2 id="news-title1">Lorem ipsum dolor</h2>
+										<h2 id="news-title1"><?php echo $row['title']; ?></h2>
 									</header>
-									<p id="news-content1"> Cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis. Vestibulum sit amet tortor velit. Nam elementum nibh a libero pharetra elementum. Maecenas feugiat ex purus, quis volutpat lacus placerat malesuada.</p>
+									<p id="news-content1"> <?php echo substr($row['content'], 0, 240); ?></p>
 									<footer class="align-center">
-										<a href="#" class="button alt" id="news-link1">Learn More</a>
+										<a href="<?php echo $row['url']; ?>" class="button alt" id="news-link1">Learn More</a>
 									</footer>
 								</div>
 							</div>
 						</div>
-						
-						<script>
-						        var id  = <?php echo $id_array[0]?>;
-						        var url = "api/newsapi.php?id="+id;
-						        $(document).ready(function() {
-						                
-						                $.getJSON(url, function(json) {
-						                
-                                                                          json.forEach(function(val) {
-                                                                          
-                                                                                $("#news-image1").attr('src',val.image_url);
-                                                                                $("#news-link1").attr('href',val.url);
-                                                                                $("#news-title1").html(val.title);
-                                                                                $("#news-content1").html(val.content);
-                                                                          
-                                                                          });
-                                                                          
-                                                                });
-						        
-						        });
-						
-						</script>
-
-						<div>
-							<div class="box" id="<?php echo $id_array[1]?>">
-								<div class="image fit">
-									<img src="images/pic02.jpg" alt="" id="news-image2"/>
-								</div>
-								<div class="content">
-									<header class="align-center">
-									<!--
-										<p>maecenas sapien feugiat ex purus</p>
-								        -->
-										<h2 id="news-title2">Lorem ipsum dolor</h2>
-									</header>
-									<p id="news-content2"> Cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis. Vestibulum sit amet tortor velit. Nam elementum nibh a libero pharetra elementum. Maecenas feugiat ex purus, quis volutpat lacus placerat malesuada.</p>
-									<footer class="align-center">
-										<a href="#" class="button alt" id="news-link2">Learn More</a>
-									</footer>
-								</div>
-							</div>
-						</div>
-						<script>
-						        var id  = <?php echo $id_array[1]?>;
-						        var url = "api/newsapi.php?id="+id;
-						        $(document).ready(function() {
-						                
-						                $.getJSON(url, function(json) {
-						                
-                                                                          json.forEach(function(val) {
-                                                                          
-                                                                                $("#news-image2").attr('src',val.image_url);
-                                                                                $("#news-link2").attr('href',val.url);
-                                                                                $("#news-title2").html(val.title);
-                                                                                $("#news-content2").html(val.content);
-                                                                          
-                                                                          });
-                                                                          
-                                                                });
-						        
-						        });
-						
-						</script>
-						<div>
-							<div class="box" id="<?php echo $id_array[2]?>">
-								<div class="image fit">
-									<img src="images/pic02.jpg" alt="" id="news-image3"/>
-								</div>
-								<div class="content">
-									<header class="align-center">
-									<!--
-										<p>maecenas sapien feugiat ex purus</p>
-								        -->
-										<h2 id="news-title3">Lorem ipsum dolor</h2>
-									</header>
-									<p id="news-content3"> Cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis. Vestibulum sit amet tortor velit. Nam elementum nibh a libero pharetra elementum. Maecenas feugiat ex purus, quis volutpat lacus placerat malesuada.</p>
-									<footer class="align-center">
-										<a href="#" class="button alt" id="news-link3">Learn More</a>
-									</footer>
-								</div>
-							</div>
-						</div>
-						<script>
-						        var id  = <?php echo $id_array[2]?>;
-						        var url = "api/newsapi.php?id="+id;
-						        $(document).ready(function() {
-						                
-						                $.getJSON(url, function(json) {
-						                
-                                                                          json.forEach(function(val) {
-                                                                          
-                                                                                $("#news-image3").attr('src',val.image_url);
-                                                                                $("#news-link3").attr('href',val.url);
-                                                                                $("#news-title3").html(val.title);
-                                                                                $("#news-content3").html(val.content);
-                                                                          
-                                                                          });
-                                                                          
-                                                                });
-						        
-						        });
-						
-						</script>
-						<div>
-							<div class="box" id="<?php echo $id_array[3]?>">
-								<div class="image fit">
-									<img src="images/pic02.jpg" alt="" id="news-image4"/>
-								</div>
-								<div class="content">
-									<header class="align-center">
-									<!--
-										<p>maecenas sapien feugiat ex purus</p>
-								        -->
-										<h2 id="news-title4">Lorem ipsum dolor</h2>
-									</header>
-									<p id="news-content4"> Cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis. Vestibulum sit amet tortor velit. Nam elementum nibh a libero pharetra elementum. Maecenas feugiat ex purus, quis volutpat lacus placerat malesuada.</p>
-									<footer class="align-center">
-										<a href="#" class="button alt" id="news-link4">Learn More</a>
-									</footer>
-								</div>
-							</div>
-						</div>
-						<script>
-						        var id  = <?php echo $id_array[3]?>;
-						        var url = "api/newsapi.php?id="+id;
-						        $(document).ready(function() {
-						                
-						                $.getJSON(url, function(json) {
-						                
-                                                                          json.forEach(function(val) {
-                                                                          
-                                                                                $("#news-image4").attr("src",val.image_url);
-                                                                                $("#news-link4").attr("href",val.url);
-                                                                                $("#news-title4").html(val.title);
-                                                                                $("#news-content4").html(val.content);
-                                                                          
-                                                                          });
-                                                                          
-                                                                });
-						        
-						        });
-						
-						</script>
+						<?php 
+							}
+						} ?>
 
 					</div>
 				</div>
