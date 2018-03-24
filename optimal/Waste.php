@@ -1,7 +1,7 @@
 <?php
         
 
-        require_once "includes/common.php";
+        require_once "../includes/common.php";
   
         $result = mysqli_query($con,"select id,user_id,name,title, content, image_url, url from user_stories natural join users");
 

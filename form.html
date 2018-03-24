@@ -156,22 +156,22 @@
         <body>
         
                 <div class="container">  
-  <form id="contact" action="phpscript/Upload.php" method="post">
+  <form id="contact" action="phpscript/upload.php" method="post">
     <h3>Story Upload</h3>
     <h4>Upload Your Stories</h4>
     <fieldset>
       <input placeholder="Your name" type="text" tabindex="1" name = "name" required autofocus>
     </fieldset>
     <fieldset>
-      <input placeholder="Your Email Address" type="email" tabindex="2" required>
+      <input placeholder="Your Email Address" type="email" name="email" tabindex="2" required>
     </fieldset>
     
     <fieldset>
-      <textarea placeholder="Type your Story here...." tabindex="5" name = "Story" required></textarea>
+      <textarea placeholder="Type your Story here...." tabindex="5" name = "story" required></textarea>
     </fieldset>
     
      <fieldset>
-      <input placeholder="Your Image file" type="file" tabindex="2" name = "Image" required>
+      <input placeholder="Your Image file" type="file" tabindex="2" name = "image" required>
     </fieldset>
     <fieldset>
       <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>

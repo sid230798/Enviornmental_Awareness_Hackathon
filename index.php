@@ -46,7 +46,7 @@
 					<img src="air.jpg" alt="" />
 					<div class="inner">
 						<header>
-							<p>Love is in the Air but is Highly <a href="https://templated.co">Polluted</a></p>
+							<p>Love is in the Air but is Highly <a href="optimal/layout/index.html">Polluted</a></p>
 							<h2>Air Pollution</h2>
 						</header>
 					</div>
@@ -55,7 +55,7 @@
 					<img src="waste.jpg" alt="" />
 					<div class="inner">
 						<header>
-							<p>Dump No Waste Protect Your <a href="https://templated.co">Lives</a></p>
+							<p>Dump No Waste Protect Your <a href="optimal/Waste.php">Lives</a></p>
 							<h2>Waste Dumping</h2>
 						</header>
 					</div>
@@ -64,7 +64,7 @@
 					<img src="sound.jpg"  alt="" />
 					<div class="inner">
 						<header>
-							<p>The Louder you Honk faster Your Health will <a href="https://templated.co">Conk ...</a></p>
+							<p>The Louder you Honk faster Your Health will <a href="optimal/Sound.php">Conk ...</a></p>
 							<h2>Sound Pollution</h2>
 						</header>
 					</div>
@@ -73,7 +73,7 @@
 					<img src="dump.jpg"  alt="" />
 					<div class="inner">
 						<header>
-							<p>Garbage Clutters the house that has no <a href="https://templated.co">Dreams</a></p>
+							<p>Garbage Clutters the house that has no <a href="optimal/layout/styles/index.html">Dreams</a></p>
 							<h2>Use Of Dustbin</h2>
 						</header>
 					</div>
