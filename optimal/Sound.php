@@ -106,8 +106,8 @@ Licence URI: http://www.os-templates.com/template-terms
       <h2 class="font-x3 uppercase nospace btmspace-30">Sound Pollution</h2>
       <p class="nospace btmspace-50"></p>
       <ul class="nospace inline pushright">
-        <li><a class="btn" href="#">Sound Pollution Causes</a></li>
-        <li><a class="btn bg-red" href="#">Sound Pollution Solutions</a></li>
+        <li><a class="btn" href="https://www.conserve-energy-future.com/causes-and-effects-of-noise-pollution.php">Sound Pollution Causes</a></li>
+        <li><a class="btn bg-red" href="https://www.conserve-energy-future.com/causes-and-effects-of-noise-pollution.php">Sound Pollution Solutions</a></li>
       </ul>
       <!-- ################################################################################################ -->
     </section>
