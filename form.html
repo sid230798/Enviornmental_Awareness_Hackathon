@@ -158,7 +158,7 @@
         <body>
         
                 <div class="container">  
-  <form id="contact" action="phpscript/upload.php" method="post">
+  <form id="contact" action="phpscript/upload.php" method="post" enctype="multipart/form-data">
     <h3>Story Upload</h3>
     <h4>Upload Your Stories</h4>
     <fieldset>
@@ -166,21 +166,20 @@
     </fieldset>
     <fieldset>
 
-      <input placeholder="Your title" type="text" tabindex="1"  required autofocus>
+      <input placeholder="Your title" type="text" name="title" tabindex="1"  required autofocus>
     </fieldset>
    <fieldset>
-      <input placeholder="Your Email Address" type="email" tabindex="2" required>
 
       <input placeholder="Your Email Address" type="email" name="email" tabindex="2" required>
 
     </fieldset>
     
     <fieldset>
-      <textarea placeholder="Type your Story here...." tabindex="5" name = "story" required></textarea>
+      <textarea placeholder="Type your Story here...." tabindex="5" name="story" required></textarea>
     </fieldset>
     
      <fieldset>
-      <input placeholder="Your Image file" type="file" tabindex="2" name = "image" required>
+      <input placeholder="Your Image file" type="file" tabindex="2" name="image" id="image" required>
     </fieldset>
     <fieldset>
       <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>

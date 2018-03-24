@@ -2,7 +2,8 @@
 
         require_once "includes/common.php";
 		session_start();
-        $result = mysqli_query($con,"select id, title, content, image_url, url from news order by time_stamp limit 4");
+		$result = mysqli_query($con,"select id, title, content, image_url, url from news order by time_stamp limit 4");
+		$result2 = mysqli_query($con,"select id,user_id,imag_url,title from user_stories limit 4");
 ?>
 <!DOCTYPE HTML>
 <!--
@@ -31,12 +32,14 @@
 					<li><a href="index.html">Home</a></li>
 					<?php if(isset($_SESSION['email'])) { ?>
 					<li><a href="phpscript/logout.php">Logout</a></li>
+					<li><a href="form.html">Stories Submit</a></li>
 					<?php }else{ ?>
 					<li><a href="login.php">Login</a></li>
 					<li><a href="signup.php">Signup</a></li>
 					<?php } ?>
 					<li><a href="generic.html">Generic</a></li>
 					<li><a href="elements.html">Elements</a></li>
+					
 				</ul>
 			</nav>
 
@@ -46,7 +49,7 @@
 					<img src="air.jpg" alt="" />
 					<div class="inner">
 						<header>
-							<p>Love is in the Air but is Highly <a href="optimal/layout/index.html">Polluted</a></p>
+							<p>Love is in the Air but is Highly <a href="optimal/index.php">Polluted</a></p>
 							<h2>Air Pollution</h2>
 						</header>
 					</div>
@@ -134,8 +137,8 @@
 			<section id="two" class="wrapper style3">
 				<div class="inner">
 					<header class="align-center">
-						<p>Nam vel ante sit amet libero scelerisque facilisis eleifend vitae urna</p>
-						<h2>Morbi maximus justo</h2>
+						<h2>Stories ...</h2>
+						<p>True Humility is not thinking less of yourself;it is thinking of yourselves less</p>
 					</header>
 				</div>
 			</section>
@@ -144,15 +147,21 @@
 			<section id="three" class="wrapper style2">
 				<div class="inner">
 					<header class="align-center">
-						<p class="special">Nam vel ante sit amet libero scelerisque facilisis eleifend vitae urna</p>
-						<h2>Morbi maximus justo</h2>
+						<p class="special">Trending Users Stories</p>
+						<h2>User Stories</h2>
 					</header>
 					<div class="gallery">
+						<?php  if($result2 && $result2->num_rows > 0) { 
+							while(($row = $result2->fetch_assoc())){ ?>
 						<div>
 							<div class="image fit">
-								<a href="#"><img src="images/pic01.jpg" alt="" /></a>
+							<?php $url = "../generic.php?story_id=".$row['id']."&user_id=".$row['user_id']; ?>
+								<a href="<?php echo $url; ?>"><img src="<?php echo $row['imag_url']; ?>" alt="" /></a>
+								<h2> <?php echo $row['title']; ?> </h2>
 							</div>
 						</div>
+							<?php } } ?>
+						<!--	
 						<div>
 							<div class="image fit">
 								<a href="#"><img src="images/pic02.jpg" alt="" /></a>
@@ -168,6 +177,7 @@
 								<a href="#"><img src="images/pic04.jpg" alt="" /></a>
 							</div>
 						</div>
+							-->
 					</div>
 				</div>
 			</section>

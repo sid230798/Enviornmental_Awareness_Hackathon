@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>Somthing went wrong</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body style="margin:20% 5% 20% 5%"> 
+
+    <div class="container-fluid" style="background-color:#f2f2f2">
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <div class="jumbotron">
+                    <h1><span class="glyphicon glyphicon-alert"></span> Somthing went wrong !</h1>
+                    <p>
+                            You will be redirected to a home page in 5 seconds
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+    </div>
+
+    <script>
+    
+    window.setTimeout(function(){
+
+// Move to a new location or you can do something else
+window.location.href = "index.php";
+
+}, 5000);
+    
+    </script>
+
+</body>
+</html>

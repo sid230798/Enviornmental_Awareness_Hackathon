@@ -3,8 +3,8 @@
 
         require_once "../includes/common.php";
   
-        $result = mysqli_query($con,"select id,user_id,name,title, content, image_url, url from user_stories natural join users");
-
+        $result = mysqli_query($con,"select user_stories.id,user_id,name,title, content, imag_url from user_stories join user where user.id = user_id");
+        echo $con->error;
 
 ?>
 <!DOCTYPE html>
@@ -130,13 +130,13 @@ Licence URI: http://www.os-templates.com/template-terms
 	?>
         <li>
           <figure class="group">
-            <div class="one_quarter first"><?php if($row['image_url'] == null) { ?>
+            <div class="one_quarter first"><?php if($row['imag_url'] == null) { ?>
 					<img class="circle" src="images/demo/180x180.png" alt="">
 					<?php } else{?>
-						        <img src="<?php echo $row['image_url']; ?>" alt="" id="news-image1"/>	
+						        <img src="<?php echo $row['imag_url']; ?>" alt="" id="news-image1"/>	
 					<?php } ?></div>
             <figcaption class="three_quarter">
-              <p><?php echo substr($row['content'], 0, 240); ?><?php $url = "generic.php?story_id=".$row['id']."&user_id=".$row['user_id']; ?><a href = "<?php echo $url; ?>" ></a></p>
+              <p><?php echo substr($row['content'], 0, 20); ?><?php $url = "../generic.php?story_id=".$row['id']."&user_id=".$row['user_id']; ?><a href = "<?php echo $url; ?>" >...Read More</a></p>
               <ul>
                 <li class="bold"><?php echo $row['name'] ; ?></li>
                 <li class="bold"><?php echo $row['title']; ?></li>
