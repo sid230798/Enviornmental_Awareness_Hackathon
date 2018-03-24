@@ -2,12 +2,8 @@
 
         require_once "includes/common.php";
 		session_start();
-		$result = mysqli_query($con,"select id, title, content, image_url, url from news order by time_stamp");
-		$result2 = mysqli_query($con,"select id, user_id, imag_url,title from user_stories limit 4");
-		$page = 0;
-		if(isset($_GET['page'])){
-			$page = $_GET['page'];
-		}
+		$result = mysqli_query($con,"select id, title, content, image_url, url from news order by time_stamp limit 4");
+		$result2 = mysqli_query($con,"select id,user_id,imag_url,title from user_stories limit 4");
 ?>
 <!DOCTYPE HTML>
 <!--
@@ -34,15 +30,16 @@
 		<!-- Nav -->
 			<nav id="menu">
 				<ul class="links">
-					<li><a href="index.php">Home</a></li>
+					<li><a href="index.html">Home</a></li>
 					<?php if(isset($_SESSION['email'])) { ?>
 					<li><a href="phpscript/logout.php">Logout</a></li>
 					<li><a href="form.html">Stories Submit</a></li>
-					<li><a href="map.php">Isuues</a></li>
 					<?php }else{ ?>
 					<li><a href="login.php">Login</a></li>
 					<li><a href="signup.php">Signup</a></li>
 					<?php } ?>
+					<li><a href="generic.html">Generic</a></li>
+					<li><a href="elements.html">Elements</a></li>
 					
 				</ul>
 			</nav>
@@ -99,55 +96,18 @@
 			</section>
 
 		<!-- One -->
-
-<script>
-					function dispage(x){
-						console.log(x);
-						if(x > 0) x = x - 1;
-						var form = document.createElement('form');
-						document.body.appendChild(form);
-						form.method = 'get';
-						form.action = 'index.php';
-						var input = document.createElement('input');
-						input.type = 'hidden';
-						input.name = 'page';
-						input.value = x;
-						form.appendChild(input);
-						form.submit();
-					}
-
-					function incpage(x){
-						x = x + 1;
-						var form = document.createElement('form');
-						document.body.appendChild(form);
-						form.method = 'get';
-						form.action = 'index.php';
-						var input = document.createElement('input');
-						input.type = 'hidden';
-						input.name = 'page';
-						input.value = x;
-						form.appendChild(input);
-						form.submit();
-					}
-				
-				</script>
-
 			<section id="one" class="wrapper style2">
 				<div class="inner">
 					<div class="grid-style">
-				<button type="button" class="btn btn-primary" onclick="dispage(<?php echo $page; ?>)">Previous</button>
-				<button type="button" class="btn btn-primary" onclick="incpage(<?php echo $page; ?>)">Next</button>
-				
+
 						<?php  if($result && $result->num_rows > 0) { 
-							for($x=0; $x < ($page + 1)*4; $x++ ){
-								$row = $result->fetch_assoc();
-								if($x < $page * 4) continue;
+							while(($row = $result->fetch_assoc())){
 							?>
 						<div>
 							<div class="box" id="<?php echo $row['id']; ?>">
 								<div class="image fit">
 									<?php if($row['image_url'] == null) { ?>
-									<img src="images/pic02.jpg" alt="" id="news-image1" class="img-thumbnail img-responsive"/>
+									<img src="images/pic02.jpg" alt="" id="news-image1"/>
 									<?php } else{?>
 										<img src="<?php echo $row['image_url']; ?>" alt="" id="news-image1"/>	
 									<?php } ?>
