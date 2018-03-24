@@ -1,7 +1,7 @@
 <?php
         
 
-        require_once "includes/common.php";
+        require_once "../includes/common.php";
   
         $result = mysqli_query($con,"select id,user_id,name,title, content, image_url, url from user_stories natural join users");
 
@@ -21,6 +21,20 @@ Licence URI: http://www.os-templates.com/template-terms
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<style>
+#holder
+{
+	position:absolute;
+	width:100%;
+	height:100%;
+}
+#holder img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+</style>
+
 </head>
 <body id="top">
 <!-- ################################################################################################ -->
@@ -222,10 +236,10 @@ Licence URI: http://www.os-templates.com/template-terms
   </main>
 </div>
 
-<div>
+<div style="background-color: #FFFFFF" id="holder">
 
   <h1> Top Stats of India in Air Pollution : </h1>
-  <img src="AirStats.jpg" />
+  <img src="AirStats.jpg"/>
 
 </div>
 <!-- ################################################################################################ -->
